@@ -12,24 +12,4 @@ public class TeamController {
 	public String main() {
 		return "main";
 	}
-	
-	@GetMapping("/test")
-	public String test() {
-		return "tests";
-	}
-	
-	@GetMapping("/dog")
-	public String dog() {
-		return "dogs";
-	}
-	
-	@GetMapping("/book")
-	public String book() {
-		return "books";
-	}
-	
-	@GetMapping("/food")
-	public String food() {
-		return "foods";
-	}
 }
