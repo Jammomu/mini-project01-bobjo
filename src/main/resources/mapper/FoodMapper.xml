@@ -4,6 +4,9 @@
     <select id="getFoodById" resultType="com.mysite.mini_bobjo.food.Food">
         SELECT * FROM foods WHERE id = #{id}
     </select>
+    <select id="getFoodnameById" resultType="com.mysite.mini_bobjo.food.Food">
+        SELECT foodimage,foodname,fooddetail FROM foods WHERE id = #{id};
+    </select>
     <select id="getFoodLimit10" resultType="com.mysite.mini_bobjo.food.Food">
 		SELECT id,foodname FROM foods ORDER BY id DESC LIMIT 10;	
     </select>

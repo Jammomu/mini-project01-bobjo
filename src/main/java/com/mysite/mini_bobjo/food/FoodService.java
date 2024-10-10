@@ -14,7 +14,7 @@ public class FoodService {
 		return foodMapper.getFoodById(id);
 	}
 	public Food getFoods(Integer id) {
-		return foodMapper.getFoodById(id);
+		return foodMapper.getFoodnameById(id);
 	}
 	 public void createMessage(Food food) {
 	        foodMapper.insertMessage(food);

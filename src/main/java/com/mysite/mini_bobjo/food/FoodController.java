@@ -59,20 +59,10 @@ FoodService foodService;
     public void createMessage(@RequestBody Food food) {
         foodService.createMessage(food);
     }
-	// list
-//	@GetMapping("/list")
-//	public String foodmain() {
-//		return "food/foodlist";
-//	}
-//	
-//	@GetMapping("/add")
-//	public String foodadd() {
-//		return "food/add";
-//	}
 	
-	@GetMapping("/detail")
-	public String fooddetail() {
-		return "food/detail";
-	}
+//	@GetMapping("/detail")
+//	public String fooddetail() {
+//		return "food/detail";
+//	}
 
 }

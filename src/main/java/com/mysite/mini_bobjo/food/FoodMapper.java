@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface FoodMapper {
 	
 	Food getFoodById(Integer id);
+	Food getFoodnameById(Integer id);
 	List<Food> getFoodLimit10();
 	void insertMessage(Food food);
 }
