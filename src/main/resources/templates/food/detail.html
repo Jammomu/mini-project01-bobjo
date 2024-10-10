@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	img{width:500px}
+</style>
 </head>
 <body>
-상세페잊
+<h2><span th:text="${food.foodname}"></span></h2>
+  	<button><a href="/food/list">목록으로 돌아가기</a></button>
+<ul>
+	<li>
+		<img th:src="${food.foodimage}"/>
+	</li>
+	<li>
+		<span th:text="${food.fooddetail}"></span>
+	</li>
+</ul>
 </body>
 </html>
