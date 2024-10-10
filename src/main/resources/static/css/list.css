@@ -1,0 +1,43 @@
+@charset "UTF-8";
+h1{color: rgb(255, 128, 64)	;}
+button{
+		border:none;
+		border-radius:10px;
+		background-color:orange;
+		height:50px;
+}
+button>a{
+	
+		color:white;
+}
+button:hover{
+		border:none;
+		border-radius:10px;
+		background-color:pink;
+		height:50px;
+}
+li,ul {list-style:none;}
+body {margin: 50px auto;}
+.list {width:500px;
+	padding:20px;
+	text-align: center;
+	border:5px double pink;
+	border-radius:10px;
+	margin:auto;}
+a{text-decoration: none;
+	font-size:20px;
+	padding:10px;
+	}
+
+	img {width: 200px;
+	height:150px;
+	border-radius:100px;
+	}
+	li {list-style:none;
+	border-radius:10px;
+	width:400px;
+	border:1px solid orange;
+	margin-top: 20px;
+	padding:10px
+	}
+	a {text-decoration:none}

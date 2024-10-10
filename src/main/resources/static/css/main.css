@@ -1,0 +1,23 @@
+@charset "UTF-8";
+h1{color: rgb(255, 128, 64)	;}
+
+li,ul {list-style:none;}
+body {margin: 50px auto;}
+.main {width:500px;
+	padding:20px;
+	text-align: center;
+	border:5px double pink;
+	border-radius:10px;
+	margin:auto;}
+a{text-decoration: none;
+	font-size:20px;
+	line-height:100px;
+	padding:10px;
+	border:1px solid;
+	border-radius:10px;
+	color: white;
+	background-color:orange;
+	}
+a:hover {
+	background-color:pink;
+}
