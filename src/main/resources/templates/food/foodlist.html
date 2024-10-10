@@ -3,49 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	img {width: 200px;}
+	li {list-style:none;}
+	a {text-decoration:none};
+</style>
 </head>
 <body>
 	<h1>음식 목록</h1>
+	<button><a href="/food">돌아가기</a></button>
 	<div id="loading_id" class="loading">Loading...</div>
 	<div id="error_id" class="error">fetching 과정에서 오류가 발생했습니다.</div>
 	<ul id="foodList_id"></ul>
 	
-	<script th:inline="javascript">
-	function fetchMessages() {
-		const foodList = document.getElementById('foodList_id');
-		const loading = document.getElementById('loading_id');
-		const error = document.getElementById('error_id');
-		
-		loading.style.display = 'block';
-		error.style.display = 'none';
-		foodList.innerHTML = '';
-		
-		fetch('/food/list/api')
-			.then(response => {
-				// 응답 결과를 json으로 변환
-				if(!response.ok) {
-					throw new Error('Network response was not ok');
-				}
-				return response.json();
-			})
-			.then(foods => {
-				// 변환된 결과를 li요소로 만들어 화면에 추가
-				loading.style.display = 'none';
-				foods.forEach(food => {
-					const li = document.createElement('li');
-					li.innerHTML = `<a href="/food/detail/${food.id}">id : ${food.id}, 이름 :${food.foodname}</a>`;
-					foodList.appendChild(li);
-				})
-			})
-			.catch(error => {
-				console.error('Fetch error:', err);
-				loading.style.display = 'none';
-				error.style.display = 'block';
-			})
-	}
-	
-	// 문서가 모두 로딩되면 fetchMessage() 함수를 실행
-	document.addEventListener('DOMContentLoaded', fetchMessages);
-	</script>
+    <script th:src="@{/js/list.js}"></script>
 </body>
 </html>

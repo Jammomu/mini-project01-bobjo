@@ -8,7 +8,7 @@
         SELECT foodimage,foodname,fooddetail FROM foods WHERE id = #{id};
     </select>
     <select id="getFoodLimit10" resultType="com.mysite.mini_bobjo.food.Food">
-		SELECT id,foodname FROM foods ORDER BY id DESC LIMIT 10;	
+		SELECT id,foodname,foodimage FROM foods ORDER BY id DESC LIMIT 10;	
     </select>
     <insert id="insertMessage" parameterType="com.mysite.mini_bobjo.food.Food">
          INSERT INTO foods(foodname,fooddetail,foodimage) VALUES (

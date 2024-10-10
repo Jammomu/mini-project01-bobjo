@@ -10,12 +10,20 @@
     <div class="container">
         <h1>새 메시지 작성</h1>
         <form id="messageForm" th:action="@{/foods}" method="post">
-            <label for="message">메시지:</label>
+            <div>
+            <label for="foodname_id">음식 이름:</label>
             <input type="text" id="foodname_id" name="foodname" required>
+            </div>
+            <div>
+            <label for="fooddetail_id">음식 설명:</label>
             <input type="text" id="fooddetail_id" name="fooddetail" required>
+            </div>
+            <div>
+            <label for="foodimage_id">사진 링크:</label>
             <input type="text" id="foodimage_id" name="foodimage" required>
+            </div>
             
-            <button type="submit">메시지 보내기</button>
+            <button type="submit">입력완료</button>
         </form>
     </div>
     
