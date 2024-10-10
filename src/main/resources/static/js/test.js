@@ -1,26 +1,26 @@
 /**
  * 
  */
-document.getElementById('testForm').addEventListener('sumit', function(e) {
+document.getElementById('testForm').addEventListener('submit', function(e) {
 	e.preventDefault();
 	
 	const test = {
-		test: document.getElementById('test_id').value
+		testname: document.getElementById('testList_id').value
 	};
 	
-	fetch('/main/tests', {
-		method: 'POST',
-		headers: {
+	fetch('/main/create', {
+		method : 'POST',
+		headers : {
 			'Content-Type' : 'application/json'
 		},
 		body : JSON.stringify(test)
 	})
 	.then(response => {
         if (response.ok) {
-            alert('메시지가 성공적으로 생성되었습니다.');
-            document.getElementById('messageForm').reset();
+            alert('목록이 성공적으로 생성되었습니다.');
+            document.getElementById('testForm').reset();
         } else {
-            alert('메시지 생성에 실패했습니다.');
+            alert('목록 생성에 실패했습니다.');
         }
     })
     .catch(error => {

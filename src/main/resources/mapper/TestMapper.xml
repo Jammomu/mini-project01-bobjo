@@ -5,6 +5,10 @@
         SELECT * FROM tests WHERE id = #{id}
     </select>
     
+    <insert id="insertTest" parameterType="com.mysite.mini_bobjo.test.Test">
+    	INSERT INTO tests (testname) VALUES (#{testname})
+    </insert>
+    
     <select id="getTestLimit5" resultType="com.mysite.mini_bobjo.test.Test">
         SELECT * FROM tests ORDER BY id DESC LIMIT 5;
     </select>

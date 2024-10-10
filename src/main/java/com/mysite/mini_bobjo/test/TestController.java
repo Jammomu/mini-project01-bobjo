@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,5 +33,15 @@ public class TestController {
 	@ResponseBody
 	public List<Test> getTestLimit5() {
 		return testService.getTestLimit5();
+	}
+	
+	@GetMapping("/tests/create")
+	public String create() {
+		return "create";
+	}
+	
+	@PostMapping("/create")
+	public void createTest(@RequestBody Test test) {
+		testService.createTest(test);
 	}
 }

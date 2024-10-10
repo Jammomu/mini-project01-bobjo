@@ -21,7 +21,7 @@ function fetchTest() {
 		loading.style.display = 'none';
 		test.forEach(tst => {
 			const li = document.createElement('li');
-			li.innerHTML = `<a href="/tests/${tst.id}">${tst.testname} (${tst.id})</a>`;
+			li.innerHTML = `<a href="/main/tests/${tst.id}">${tst.testname} (${tst.id})</a>`;
 			testList.appendChild(li);
 		})
 	})

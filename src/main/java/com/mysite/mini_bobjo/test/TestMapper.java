@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface TestMapper {
 	public Test getTestById(Integer id);
-//	void insertTest(Test test);
+	void insertTest(Test test);
 	List<Test> getTestLimit5();
 }

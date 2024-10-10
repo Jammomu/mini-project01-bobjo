@@ -14,9 +14,9 @@ public class TestService {
 		return testMapper.getTestById(id);
 	}
 	
-//	public void createTest(Test test) {
-//		testMapper.insertTest(test);
-//	}
+	public void createTest(Test test) {
+		testMapper.insertTest(test);
+	}
 	
 	public List<Test> getTestLimit5() {
 		return testMapper.getTestLimit5();
