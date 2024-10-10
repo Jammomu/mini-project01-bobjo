@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mysite.mini_bobjo.BookMapper">
     <select id="getBookTitle" parameterType="string" resultType="com.mysite.mini_bobjo.Book">
-        SELECT * FROM List where title = #{title}
+    SELECT * FROM books 
     </select>
+    <select id="searchTitle" resultType="com.mysite.mini_bobjo.Book">
+        SELECT * FROM books WHERE (title LIKE CONCAT('%', #{keyword}, '%'))
+    </select>
+        <select id="searchAuthor" resultType="com.mysite.mini_bobjo.Book">
+        SELECT * FROM books WHERE (author LIKE CONCAT('%', #{keyword}, '%'))
+    </select>
+
 </mapper>
