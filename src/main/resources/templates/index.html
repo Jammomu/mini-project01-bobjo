@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>책 목록</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
+</head>
+<body>
+<h1><a th:href="@{/}">책 목록</a></h1>
+
+<div class="search-container">
+    <form th:action="@{/}" method="get">
+        <select name="searchoption" class="select-dropdown">
+            <option value="타이틀">타이틀</option>
+            <option value="작가">작가</option>
+        </select>
+        <input type="text" class="search-input" name="keyword" th:value="${keyword}" placeholder="책 제목 또는 저자 검색..." />
+        <button type="submit" class="search-button">검색</button>
+    </form>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>제목</th>
+            <th>저자</th>
+            <th>출판일</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.year}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(books)}">
+            <td colspan="4">책이 없습니다.</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

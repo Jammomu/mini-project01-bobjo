@@ -15,7 +15,7 @@ public class BookController {
     @GetMapping("/")
     public ModelAndView index(@RequestParam(value = "keyword", required = false) String keyword,
                                @RequestParam(value = "searchoption", required = false) String searchoption) {
-        ModelAndView modelAndView = new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("index");  // index.jsp 대신 index.html로 렌더링
 
         if (keyword != null && !keyword.trim().isEmpty()) {
             switch (searchoption) {
@@ -35,5 +35,10 @@ public class BookController {
             modelAndView.addObject("books", bookService.getAllBooks());
         }
         return modelAndView;
+    }
+
+    @GetMapping("/detail")
+    public String detail() {
+        return "detail";  // detail.jsp 대신 detail.html로 렌더링
     }
 }
