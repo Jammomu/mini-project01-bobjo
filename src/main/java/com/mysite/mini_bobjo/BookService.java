@@ -13,10 +13,21 @@ public class BookService {
     public List<Book> getAllBooks() {
         return bookMapper.getAllBooks();
     }
+
     public List<Book> searchTitle(String keyword) {
         return bookMapper.searchTitle(keyword);
     }
+
     public List<Book> searchAuthor(String keyword) {
         return bookMapper.searchAuthor(keyword);
     }
+
+    public Book getbookid(Integer keyword) {
+        return bookMapper.getbookid(keyword);
+    }
+
+    public void addBook(Book book) {
+        bookMapper.addBook(book.getTitle(), book.getAuthor(), book.getYear(), book.getDetail());
+    }
+
 }

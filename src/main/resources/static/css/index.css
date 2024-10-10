@@ -41,7 +41,9 @@ td {
 
 /* 검색 폼 스타일 */
 .search-container {
-    text-align: center;
+    display: flex; /* flexbox로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: space-between; /* 요소들 사이에 공간을 고르게 분배 */
     margin-bottom: 20px;
 }
 
@@ -70,7 +72,26 @@ td {
 
 a {
     color: #007bff;
-    text-decoration-line: none;
+    text-decoration: none;
+}
+
+/* 책 추가 버튼 스타일 */
+.add-book-container {
+    margin-left: 20px; /* 검색 폼과 버튼 사이에 여백 추가 */
+}
+
+.btn {
+    padding: 10px 15px;
+    background-color: #28a745; /* 버튼 배경색 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #218838; /* 버튼 hover 시 색상 변경 */
 }
 
 /* 선택 드롭다운 스타일 */

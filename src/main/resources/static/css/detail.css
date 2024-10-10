@@ -1,0 +1,59 @@
+/* detail.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white; /* 배경색을 흰색으로 설정 */
+    padding: 20px;
+    border-radius: 8px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+h1 {
+    text-align: center;
+    color: #333; /* 제목 색상 설정 */
+}
+
+h3 {
+    text-align: center;
+    color: #555; /* 저자 이름 색상 설정 */
+}
+
+.book-details {
+    text-align: center;
+    margin: 20px 0; /* 여백 설정 */
+}
+
+.book-details img {
+    max-width: 100%; /* 이미지 크기 조정 */
+    height: auto; /* 비율 유지 */
+    border-radius: 4px; /* 이미지 모서리 둥글게 */
+}
+
+p {
+    text-align: left;
+    line-height: 1.6; /* 줄 간격 설정 */
+    color: #555; /* 설명 색상 설정 */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff; /* 버튼 배경색 설정 */
+    color: white;
+    text-decoration: none; /* 밑줄 제거 */
+    margin-top: 20px; /* 버튼 위 여백 설정 */
+    transition: background-color 0.3s; /* 배경색 전환 효과 */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* 호버 시 배경색 변경 */
+}
