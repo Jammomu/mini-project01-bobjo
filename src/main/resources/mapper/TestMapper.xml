@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mysite.mini_bobjo.test.TestMapper">
+    <select id="getTestById" resultType="com.mysite.mini_bobjo.test.Test">
+        SELECT * FROM tests WHERE id = #{id}
+    </select>
+    
+    <insert id="insertTest" parameterType="com.mysite.mini_bobjo.test.Test">
+    	INSERT INTO tests (testname) VALUES (#{testname})
+    </insert>
+    
+    <select id="getTestLimit5" resultType="com.mysite.mini_bobjo.test.Test">
+        SELECT * FROM tests ORDER BY id DESC LIMIT 5;
+    </select>
+</mapper>

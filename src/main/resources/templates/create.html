@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<div class="container">
+		<h1>새 메시지 작성</h1>
+		<form id="testForm" th:action="@{/main/tests/create}" method="post">
+			<label for="testList_id">test : </label>
+			<input type="text" id="testList_id" name="test" required/>
+			<button type="submit">목록 추가하기</button>
+		</form>
+	</div>
+	
+	<script th:src="@{/js/test.js}"></script>
+</body>
+</html>
