@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mysite.mini_bobjo.dog.DogMapper">
+	<select id="getDogById" resultType="com.mysite.mini_bobjo.dog.Dogs">
+        SELECT * FROM dogs where id = #{id} ;
+    </select>
+    
+    <insert id="insertDog" parameterType="com.mysite.mini_bobjo.dog.Dogs">
+    	INSERT INTO dogs(dog) VALUES (#{dog});
+   	</insert>
+   	
+	<select id="getDogs" resultType="com.mysite.mini_bobjo.dog.Dogs">
+        SELECT * FROM dogs ;
+    </select>
+</mapper>
