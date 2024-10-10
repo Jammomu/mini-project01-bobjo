@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>새 메시지 작성</title>
+    <link rel="stylesheet" th:href="@{/css/add.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>새 메시지 작성</h1>
+        <form id="messageForm" th:action="@{/foods}" method="post">
+            <div>
+            <label for="foodname_id">음식 이름:</label>
+            <input type="text" id="foodname_id" name="foodname" required>
+            </div>
+            <div>
+            <label for="fooddetail_id">음식 설명:</label>
+            <input type="text" id="fooddetail_id" name="fooddetail" required>
+            </div>
+            <div>
+            <label for="foodimage_id">사진 링크:</label>
+            <input type="text" id="foodimage_id" name="foodimage" required>
+            </div>
+            
+            <button type="submit">입력완료</button>
+        </form>
+    </div>
+    
+    <!--script th:inline="javascript">
+    	var contextPath = /*[[@{/}]]*/'';
+    </script-->
+    <script th:src="@{/js/add.js}"></script>
+</body>
+</html>
