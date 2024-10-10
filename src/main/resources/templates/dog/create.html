@@ -3,12 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	div {
+		text-align: center;
+	}
+</style>
 </head>
 <body>
-	<form id="createForm" action="/action_page.php">
-		<input type="text" id="dog_id" name="dog"/>
-		<button type="submit">추가</button>
-	</form>
+	<div>
+		<h1><a href="/dog">홈으로</a></h1>
+		<form id="createForm" action="/action_page.php">
+			<input type="text" id="dog_id" name="dog"/><br/>
+			<button type="submit">추가</button>
+		</form>
+	</div>
 	
 <script th:src="@{/js/dog.js}"></script>
 	

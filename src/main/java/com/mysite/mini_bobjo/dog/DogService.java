@@ -1,5 +1,7 @@
 package com.mysite.mini_bobjo.dog;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class DogService {
 	
 	public void createDog(Dogs dog) {
 		dogMapper.insertDog(dog);
+	}
+	
+	public List<Dogs> getDogs() {
+		return dogMapper.getDogs();
 	}
 }

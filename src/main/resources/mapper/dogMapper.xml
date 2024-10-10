@@ -4,4 +4,8 @@
     <insert id="insertDog" parameterType="com.mysite.mini_bobjo.dog.Dogs">
     	INSERT INTO dogs(dog) VALUES (#{dog});
    	</insert>
+   	
+	<select id="getDogs" resultType="com.mysite.mini_bobjo.dog.Dogs">
+        SELECT * FROM dogs ;
+    </select>
 </mapper>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Dog list</title>
+</head>
+<body>
+<h1><a href="/dog">홈으로</a></h1>
+<h1>Dog List</h1>
+<div id="loading_id" class="loading">Loading...</div>
+<div id="error_id" class="error">fetching 과정에서 오류가 발생했습니다.</div>
+<ul id="dogList_id"></ul>
+<button onClick="fetchDogs()">불러오기</button>
+
+
+<script th:inline="javascript">
+function fetchDogs() {
+	const dogList = document.getElementById('dogList_id');
+	const loading = document.getElementById('loading_id');
+	const error = document.getElementById('error_id');
+	
+	loading.style.display = 'block';
+	error.style.display = 'none';
+	dogList.innerHTML = '';
+	
+	fetch('/dog/api')
+		.then(response => {
+			if(!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+			return response.json();
+		})
+		.then(dogs => {
+			// 변환된 결과를 li요소로 만들어 화면에 추가
+			loading.style.display = 'none';
+			dogs.forEach(dog => {
+				const li = document.createElement('li');
+				li.textContent = `${dog.dog} (${dog.id})`;
+				dogList.appendChild(li);
+			})
+		})
+		.catch(error => {
+			console.error('Fetch error:', error);
+			loading.style.display = 'none';
+			error.style.display = 'block';
+		})
+}
+
+document.addEventListener('DOMContentLoaded', fetchDogs);
+</script>
+</body>
+</html>
