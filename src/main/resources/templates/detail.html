@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.title}">Book Detail</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<link rel="stylesheet" th:href="@{/css/detail.css}" />
+<body>
+    <div class="container">
+        <h1 th:text="${book.title}">Book Title</h1>
+        <h3 th:text="${book.author}">Author Name</h3>
+        <div class="book-details">
+            <p th:text="${book.detail}">Book description goes here.</p> <!-- detail 속성을 사용 -->
+        </div>
+        <a th:href="@{/book}" class="btn">뒤로가기</a>
+    </div>
+</body>
+</html>
