@@ -10,7 +10,7 @@
 <div id="loading_id" class="loading">Loading...</div>
 <div id="error_id" class="error">fetching 과정에서 오류가 발생했습니다.</div>
 <ul id="dogList_id"></ul>
-<button onClick="fetchDogs()">불러오기</button>
+<!-- <button onClick="fetchDogs()">불러오기</button> -->
 
 
 <script th:inline="javascript">
@@ -35,7 +35,7 @@ function fetchDogs() {
 			loading.style.display = 'none';
 			dogs.forEach(dog => {
 				const li = document.createElement('li');
-				li.textContent = `${dog.dog} (${dog.id})`;
+				li.innerHTML = `${dog.id}. <a href="/dog/detail/${dog.id}">${dog.dog}</a>`;
 				dogList.appendChild(li);
 			})
 		})
