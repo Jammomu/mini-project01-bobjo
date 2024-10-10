@@ -14,9 +14,10 @@ public class FoodController {
 FoodService foodService;
 
 	@GetMapping("/{id}")
-	@ResponseBody
-	public String getFood(@PathVariable("id") Integer id) {
-		return foodService.getFood(id);
+	//@ResponseBody
+	public String getFood(@PathVariable("id") String id) {
+		return id;
+		//return foodService.getFood(id);
 	}
 	
 	@GetMapping

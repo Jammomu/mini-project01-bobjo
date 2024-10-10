@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FoodService {
-	public String getFood(Integer id) {
-		return "hello";
+	public String getFood(String id) {
+		return id;
 	}
 }
