@@ -30,16 +30,20 @@ FoodService foodService;
 	public String food() {
 		return "food";
 	}
+	@GetMapping("/list")
+	public String foodlist() {
+		return "food/foodlist";
+	}
 	
 	// api로 json응답
-	@GetMapping("/list")
+	@GetMapping("/list/api")
 	@ResponseBody
 	public List<Food> getFoodLimit10(){
 		return foodService.getFoodLimit10();
 	}
 	
 	// detail 
-	@GetMapping("/list/{id}")
+	@GetMapping("/detail/{id}")
 	public String getFoods(@PathVariable("id") Integer id, Model model){
 		Food food = foodService.getFoods(id);
 		model.addAttribute("food", food);

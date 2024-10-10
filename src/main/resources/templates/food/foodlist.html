@@ -9,7 +9,7 @@
 	<h1>Message List</h1>
 	<div id="loading_id" class="loading">Loading...</div>
 	<div id="error_id" class="error">fetching 과정에서 오류가 발생했습니다.</div>
-	<ul id="messageList_id"></ul>
+	<ul id="foodList_id"></ul>
 	
 	<script th:inline="javascript">
 	function fetchMessages() {
@@ -21,7 +21,7 @@
 		error.style.display = 'none';
 		foodList.innerHTML = '';
 		
-		fetch('/food/list')
+		fetch('/food/list/api')
 			.then(response => {
 				// 응답 결과를 json으로 변환
 				if(!response.ok) {
