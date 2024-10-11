@@ -19,7 +19,7 @@ public class BookController {
     @GetMapping("/book")
     public ModelAndView index(@RequestParam(value = "keyword", required = false) String keyword,
                                @RequestParam(value = "searchoption", required = false) String searchoption) {
-        ModelAndView modelAndView = new ModelAndView("index");  // index.jsp 대신 index.html로 렌더링
+        ModelAndView modelAndView = new ModelAndView("book");
 
         if (keyword != null && !keyword.trim().isEmpty()) {
             switch (searchoption) {
