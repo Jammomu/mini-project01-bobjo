@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BookController {
@@ -16,60 +15,65 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
     @GetMapping("/book")
-    public ModelAndView index(@RequestParam(value = "keyword", required = false) String keyword,
-                               @RequestParam(value = "searchoption", required = false) String searchoption) {
-        ModelAndView modelAndView = new ModelAndView("index");  // index.jsp 대신 index.html로 렌더링
+    public String book(
+            @RequestParam(value = "keyword", required = false) String keyword,
+            @RequestParam(value = "searchoption", required = false, defaultValue = "타이틀") String searchoption,
+            @RequestParam(value = "page", defaultValue = "1") int page,  // 페이지 번호 파라미터 추가
+            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,  // 페이지 크기 파라미터 추가
+            Model model) {
 
         if (keyword != null && !keyword.trim().isEmpty()) {
             switch (searchoption) {
-                case "타이틀":
-                    modelAndView.addObject("books", bookService.searchTitle(keyword));
-                    break;
                 case "작가":
-                    modelAndView.addObject("books", bookService.searchAuthor(keyword));
+                    model.addAttribute("books", bookService.searchAuthor(keyword));
                     break;
+                case "타이틀":
                 default:
-                    // 기본 검색 옵션이나 잘못된 검색 옵션일 경우
-                    modelAndView.addObject("books", bookService.getAllBooks());
-                    return modelAndView;
+                    model.addAttribute("books", bookService.searchTitle(keyword));
+                    break;
             }
-            modelAndView.addObject("keyword", keyword);
+            model.addAttribute("keyword", keyword);
         } else {
-            modelAndView.addObject("books", bookService.getAllBooks());
+            model.addAttribute("books", bookService.getAllBooksPaged(page, pageSize));  // 페이징된 데이터 가져오기
         }
-        return modelAndView;
+
+        int totalBooks = bookService.countBooks();  // 전체 책 개수 가져오기
+        int totalPages = (int) Math.ceil((double) totalBooks / pageSize);  // 전체 페이지 수 계산
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+
+        return "book";
     }
 
     @GetMapping("/detail")
-    public String detail(@RequestParam("id") Integer keyword, Model model) {
-        // bookId에 해당하는 책을 가져옴
-        Book book = bookService.getbookid(keyword);  // 단일 Book 객체 반환
-        model.addAttribute("book", book);  
-        return "detail";  
+    public String detail(@RequestParam("id") Integer id, Model model) {
+        model.addAttribute("book", bookService.getbookid(id));
+        return "detail";
     }
 
-    @PostMapping("/addBook")
-    public String addBook(@RequestParam String title,
-                          @RequestParam String author,
-                          @RequestParam Integer year,
-                          @RequestParam String detail) {
-        // 새 책을 Book 객체로 생성
-        Book newBook = new Book();
-        newBook.setTitle(title);
-        newBook.setAuthor(author);
-        newBook.setYear(year);
-        newBook.setDetail(detail);
-        
-        // BookService를 통해 책을 추가
-        bookService.addBook(newBook);
-        
-        // 책 목록 페이지로 리다이렉트
+    @GetMapping("/addbook")
+    public String addBook(@RequestParam("title") String title,
+                          @RequestParam("author") String author,
+                          @RequestParam("year") Integer year,
+                          @RequestParam("detail") String detail) {
+        bookService.addBook(title, author, year, detail);
         return "redirect:/book";
     }
+
     @GetMapping("/add")
     public String add() {
-    	return "addbook";
+        return "insertbook";
     }
 
+    @PostMapping("/delete")
+    public String deleteBooks(@RequestParam("ids") List<Integer> ids) {
+        bookService.deleteBook(ids);  // 여러 책 삭제하는 서비스 호출
+        return "redirect:/book";  // 삭제 후 책 목록으로 리다이렉트
+    }
 }

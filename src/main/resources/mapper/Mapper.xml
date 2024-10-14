@@ -17,4 +17,24 @@
         INSERT INTO books (title, author, year, detail)
         VALUES (#{title}, #{author}, #{year}, #{detail})
     </insert>
+    <delete id="deletebook" parameterType="java.util.List">
+        DELETE FROM books WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <select id="getAllBooksPaged" resultType="com.mysite.mini_bobjo.Book">
+        SELECT * FROM books
+        ORDER BY id DESC
+        LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+    <!-- 전체 책 개수 카운트 쿼리 -->
+    <select id="countBooks" resultType="int">
+        SELECT COUNT(*) FROM books
+    </select>
+
+    
 </mapper>

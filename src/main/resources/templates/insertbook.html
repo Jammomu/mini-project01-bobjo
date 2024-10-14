@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h1>책 추가</h1>
-        <form action="#" th:action="@{/add}" method="post">
+        <form action="#" th:action="@{/addbook}" method="get">
             <label for="title">제목:</label>
             <input type="text" id="title" name="title" required />
             <br />
@@ -21,9 +21,9 @@
             <label for="detail">상세:</label>
             <textarea id="detail" name="detail" required></textarea>
             <br />
-            <button type="submit" class="btn">책 추가</button> <!-- btn 클래스 추가 -->
+            <button type="submit" class="btn">책 추가</button> 
         </form>
-        <a th:href="@{/book}" class="btn">책 목록</a> <!-- btn 클래스 추가 -->
+        <a th:href="@{/book}" class="btn">책 목록</a>
     </div>
 </body>
 </html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>책 목록</title>
+    <link rel="stylesheet" th:href="@{/css/book.css}" />
+    <style>
+
+    </style>
+</head>
+<body>
+<h1><a th:href="@{/book}">책 목록</a></h1>
+
+<div class="search-container">
+    <form th:action="@{/book}" method="get">
+        <select name="searchoption" class="select-dropdown">
+            <option value="타이틀">타이틀</option>
+            <option value="작가">작가</option>
+        </select>
+        <input type="text" class="search-input" name="keyword" th:value="${keyword}" placeholder="책 제목 또는 저자 검색..." />
+        <button type="submit" class="search-button">검색</button>
+    </form>
+    <div class="add-book-container">
+        <a th:href="@{/add}" class="btn">책 추가</a>
+    </div>
+</div>
+
+<!-- 삭제할 책을 선택할 수 있는 폼 -->
+<form th:action="@{/delete}" method="post">
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="select-all" /></th> <!-- 전체 선택 체크박스 -->
+                <th>번호</th>
+                <th>제목</th>
+                <th>저자</th>
+                <th>출판일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book, iterStat : ${books}">
+                <td><input type="checkbox" name="ids" th:value="${book.id}" /></td> <!-- 개별 책 선택 체크박스 -->
+                <td th:text="${#lists.size(books) - iterStat.index}"></td>
+                <td>
+                    <a th:href="@{/detail(id=${book.id})}" th:text="${book.title}"></a>
+                </td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.year}"></td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(books)}">
+                <td colspan="5">책이 없습니다.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn">선택된 책 삭제</button> <!-- 선택된 책 삭제 버튼 -->
+</form>
+
+<!-- 페이지 네비게이션 추가 -->
+<div class="pagination">
+    <ul>
+        <li th:if="${currentPage > 1}">
+            <a th:href="@{/book(page=${currentPage - 1})}">&laquo; 이전</a>
+        </li>
+        <li th:each="i : ${#numbers.sequence(1, totalPages)}"
+            th:classappend="${i == currentPage} ? 'active'">
+            <a th:href="@{/book(page=${i})}" th:text="${i}"></a>
+        </li>
+        <li th:if="${currentPage < totalPages}">
+            <a th:href="@{/book(page=${currentPage + 1})}">다음 &raquo;</a>
+        </li>
+    </ul>
+</

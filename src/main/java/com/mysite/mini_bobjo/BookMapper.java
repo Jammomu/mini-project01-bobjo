@@ -24,4 +24,10 @@ public interface BookMapper {
                  @Param("author") String author,
                  @Param("year") Integer year,
                  @Param("detail") String detail);
+
+    void deletebook(@Param("ids") List<Integer> ids);  
+    List<Book> getAllBooksPaged(@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+    // 전체 책 개수 조회
+    int countBooks();
 }
